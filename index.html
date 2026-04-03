@@ -998,7 +998,11 @@ function convertLink(link){
           <div><strong>الوصف:</strong> ${escapeHtml(item.description || "-")}</div>
           <div>
 <strong>الملف:</strong><br>
-<iframe src="${convertLink(item.file || "")}" width="100%" height="300" style="border-radius:10px;"></iframe>
+${
+  item.file && item.file.includes("drive.google.com/file")
+  ? `<iframe src="${convertLink(item.file)}" width="100%" height="300" style="border-radius:10px;"></iframe>`
+  : `<a href="${item.file}" target="_blank" style="color:#0b8f55;font-weight:bold;">فتح الشواهد</a>`
+}
 </div>
           <div><strong>ملاحظات:</strong> ${escapeHtml(item.notes || "-")}</div>
           <div class="muted"><strong>التاريخ:</strong> ${escapeHtml(item.date || "-")}</div>
