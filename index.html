@@ -511,23 +511,28 @@
   <div id="managerEvidenceList"></div>
               
           <section id="evaluationPage" class="card hidden">
-            <div class="head-mini">
-              <h2 class="title">التقييم</h2>
-              <button onclick="showManagerPage('dashboardPage')" style="margin-bottom:10px;">
-  رجوع
-</button>
-              <div id="evaluationTargetText" class="badge">لا توجد منسوبة محددة</div>
-            </div>
+  <div class="head-mini">
+    <h2 class="title">التقييم</h2>
+    <div id="evaluationTargetText" class="badge">لا توجد منسوبة محددة</div>
+  </div>
 
-            <div id="criteriaContainer"></div>
+  <button onclick="showManagerPage('dashboardPage')" style="margin-bottom:10px;">
+    رجوع
+  </button>
 
-            <div class="toolbar">
-              <button class="btn btn-primary" onclick="calculateEvaluation()">حساب النتيجة</button>
-              <button class="btn btn-primary" onclick="saveEvaluation()">حفظ التقييم</button>
-            </div>
+  <div id="evaluationList"></div>
 
-            <div id="evaluationResult" class="report-box" style="margin-top:16px">لا يوجد حساب بعد.</div>
-          </section>
+  <div id="criteriaContainer"></div>
+
+  <div class="toolbar">
+    <button class="btn btn-primary" onclick="calculateEvaluation()">حساب النتيجة</button>
+    <button class="btn btn-primary" onclick="saveEvaluation()">حفظ التقييم</button>
+  </div>
+
+  <div id="evaluationResult" class="report-box" style="margin-top:16px">
+    لا يوجد حساب بعد.
+  </div>
+</section>
 
           <section id="planPage" class="card hidden">
             <div class="head-mini">
