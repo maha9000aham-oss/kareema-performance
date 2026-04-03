@@ -848,20 +848,26 @@
       refreshDashboardCounts();
     }
 
-    function refreshDashboardCounts(){
-      if(!currentTarget){
-        qs("countEvidence").textContent = "0";
-        qs("evalState").textContent = "غير محفوظ";
-        return;
-      }
+function refreshDashboardCounts(){
+  if(!currentTarget){
+    qs("countEvidence").textContent = "0";
+    qs("evalState").textContent = "غير محفوظ";
+    return;
+  }
 
-      const evidences = getEvidenceListFor(currentTarget.name);
-      const evaluation = getEvaluationFor(currentTarget.name);
+  const evidences = getEvidenceListFor(currentTarget.name);
+  const evaluation = getEvaluationFor(currentTarget.name);
 
-      qs("countEvidence").textContent = evidences.length;
-      qs("evalState").textContent = evaluation ? "محفوظ" : "غير محفوظ";
-    }
+  qs("countEvidence").textContent = evidences.length;
+  qs("evalState").textContent = evaluation ? "محفوظ" : "غير محفوظ";
+}
 
+function convertLink(link){
+  if(link && link.includes("drive.google.com")){
+    return link.replace("/view", "/preview").split("?")[0];
+  }
+  return link;
+}
     function buildStaffList(){
       const box = qs("staffListBox");
       const employees = getNonManagers();
