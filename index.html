@@ -1,1 +1,1285 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>منصة تقييم الأداء الوظيفي لمنسوبات كريمة بنت همام</title>
+  <style>
+    :root{
+      --green:#168a5a;
+      --green-dark:#0f744b;
+      --green-soft:#eaf6ef;
+      --bg:#edf5f0;
+      --card:#ffffff;
+      --text:#1d2b24;
+      --border:#d7e5dc;
+      --muted:#6c7c74;
+      --shadow:0 12px 30px rgba(0,0,0,.08);
+      --danger:#b42318;
+      --warning:#b7791f;
+      --radius:22px;
+    }
 
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:Arial, Tahoma, sans-serif;
+      background:linear-gradient(180deg,#f6fbf8 0%, #edf5f0 100%);
+      color:var(--text);
+    }
+
+    .topbar{
+      background:#0c5b3b;
+      color:#fff;
+      padding:18px 16px;
+      text-align:center;
+      font-size:26px;
+      font-weight:700;
+    }
+
+    .subbar{
+      background:#168a5a;
+      color:#fff;
+      padding:12px 16px;
+      text-align:center;
+      font-size:15px;
+    }
+
+    .container{
+      max-width:1250px;
+      margin:24px auto;
+      padding:0 16px 32px;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid #e8efea;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:24px;
+      margin-bottom:20px;
+    }
+
+    .title{
+      font-size:28px;
+      margin:0 0 16px;
+      color:var(--green-dark);
+      font-weight:700;
+    }
+
+    .subtitle{
+      font-size:20px;
+      margin:0 0 14px;
+      color:var(--green-dark);
+      font-weight:700;
+    }
+
+    .muted{
+      color:var(--muted);
+      line-height:1.9;
+      font-size:15px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+    }
+
+    .stack{display:flex;flex-direction:column;gap:12px}
+
+    label{
+      display:block;
+      margin:10px 0 8px;
+      font-size:16px;
+      font-weight:700;
+    }
+
+    input, select, textarea{
+      width:100%;
+      padding:14px 14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      font-size:16px;
+      background:#fff;
+      color:var(--text);
+      outline:none;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+
+    .btn{
+      border:none;
+      border-radius:14px;
+      padding:14px 18px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s;
+    }
+
+    .btn-primary{
+      background:var(--green);
+      color:#fff;
+    }
+    .btn-primary:hover{background:var(--green-dark)}
+
+    .btn-soft{
+      background:var(--green-soft);
+      color:var(--green-dark);
+      border:1px solid var(--border);
+    }
+
+    .btn-danger{
+      background:var(--danger);
+      color:#fff;
+    }
+
+    .toolbar{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:20px;
+      align-items:stretch;
+    }
+
+    .hero-box{
+      background:linear-gradient(135deg,#f8fffb 0%, #eef8f2 100%);
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
+      min-height:220px;
+    }
+
+    .hero-box h2{
+      margin:0 0 12px;
+      color:var(--green-dark);
+      font-size:24px;
+    }
+
+    .hero-box p{
+      line-height:2;
+      margin:0 0 16px;
+    }
+
+    .hidden{display:none !important}
+
+    .badge{
+      display:inline-block;
+      background:var(--green-soft);
+      color:var(--green-dark);
+      border:1px solid var(--border);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .notice{
+      background:#fff8e8;
+      border:1px solid #f1e0a6;
+      color:#7a5a00;
+      border-radius:16px;
+      padding:14px;
+      line-height:1.9;
+      margin-top:12px;
+    }
+
+    .danger-text{color:var(--danger);font-weight:700}
+    .success-text{color:var(--green-dark);font-weight:700}
+
+    .app-shell{
+      display:grid;
+      grid-template-columns:280px 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .sidebar{
+      position:sticky;
+      top:14px;
+    }
+
+    .menu-btn{
+      width:100%;
+      text-align:right;
+      background:#fff;
+      border:1px solid var(--border);
+      color:var(--text);
+      padding:14px 16px;
+      border-radius:14px;
+      font-size:16px;
+      cursor:pointer;
+      margin-bottom:10px;
+      font-weight:700;
+    }
+
+    .menu-btn.active,
+    .menu-btn:hover{
+      background:var(--green-soft);
+      color:var(--green-dark);
+    }
+
+    .info-line{
+      line-height:2;
+      font-size:17px;
+    }
+
+    .list-clean{
+      list-style:none;
+      padding:0;
+      margin:0;
+    }
+
+    .staff-row, .evidence-row, .qr-card, .criterion-box{
+      border:1px solid var(--border);
+      background:#fbfefc;
+      border-radius:18px;
+      padding:16px;
+      margin-bottom:12px;
+    }
+
+    .staff-row{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .qr-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+      gap:16px;
+    }
+
+    .qr-card{
+      text-align:center;
+      background:#fff;
+    }
+
+    .qr-card img{
+      width:180px;
+      height:180px;
+      object-fit:contain;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:#fff;
+      padding:8px;
+      margin:10px auto;
+      display:block;
+    }
+
+    .link-box{
+      direction:ltr;
+      text-align:left;
+      background:#f6faf7;
+      border:1px dashed var(--border);
+      padding:10px;
+      border-radius:12px;
+      word-break:break-all;
+      font-size:12px;
+      margin-top:10px;
+    }
+
+    .criterion-box label{
+      margin-top:0;
+    }
+
+    .report-box{
+      white-space:pre-wrap;
+      line-height:2;
+      background:#f9fcfa;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+    }
+
+    .head-mini{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .empty{
+      text-align:center;
+      padding:30px 16px;
+      color:var(--muted);
+      border:1px dashed var(--border);
+      border-radius:18px;
+      background:#fcfffd;
+    }
+
+    .footer-note{
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:20px;
+      line-height:1.9;
+    }
+
+    @media (max-width:980px){
+      .hero,.app-shell,.grid-2,.grid-3{
+        grid-template-columns:1fr;
+      }
+      .sidebar{position:static}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">منصة تقييم الأداء الوظيفي</div>
+  <div class="subbar">منصة تقييم الأداء الوظيفي لمنسوبات كريمة بنت همام</div>
+
+  <div class="container">
+    <section id="landingSection" class="card">
+      <div class="hero">
+        <div class="hero-box">
+          <h2>لوحة الدخول الرئيسية</h2>
+          <p>
+            هذه المنصة مخصصة لتقسيم الصلاحيات بشكل واضح:
+            <br>• المديرة: التقييم والخطة العلاجية والتقارير وعرض الشواهد
+            <br>• المنسوبات: رفع الشواهد فقط عبر الرابط أو الباركود الخاص بكل منسوبة
+          </p>
+          <div class="toolbar">
+            <button class="btn btn-primary" onclick="openManagerLogin()">دخول المديرة</button>
+            <button class="btn btn-soft" onclick="showStaffRouteInfo()">رفع الشواهد بالباركود</button>
+          </div>
+          <div id="routeInfo" class="notice hidden">
+            إذا فُتح الرابط عبر الباركود الخاص بالمنسوبة فسيتم الدخول مباشرة إلى نموذج الشواهد الخاص بها فقط.
+          </div>
+        </div>
+
+        <div class="hero-box">
+          <h2>دخول المديرة</h2>
+          <label>اسم المديرة</label>
+          <select id="managerName"></select>
+
+          <label>رمز الدخول</label>
+          <input id="managerPin" type="password" placeholder="أدخلي رمز دخول المديرة" />
+
+          <div class="toolbar">
+            <button class="btn btn-primary" onclick="managerLogin()">دخول</button>
+          </div>
+
+          <div class="notice">
+            رمز الدخول الافتراضي داخل هذا الكود هو:
+            <strong>1234</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="staffFormSection" class="card hidden">
+      <div class="head-mini">
+        <div>
+          <h2 class="title" style="margin-bottom:6px">رفع الشواهد</h2>
+          <div id="staffHeaderText" class="info-line"></div>
+        </div>
+        <button class="btn btn-soft" onclick="goHome()">العودة للرئيسية</button>
+      </div>
+
+      <div class="notice">
+        هذه الصفحة مخصصة للمنسوبة الحالية فقط، ولا تحتوي على التقييم أو التقارير.
+      </div>
+
+      <label>عنوان الشاهد</label>
+      <input id="evidenceTitle" placeholder="مثال: شهادة تدريب - خطة علاجية - حضور ورشة" />
+
+      <label>وصف الشاهد</label>
+      <textarea id="evidenceDescription" placeholder="اكتبي وصفًا مختصرًا للشاهد"></textarea>
+
+      <label>رابط الملف أو اسم الملف</label>
+      <input id="evidenceFile" placeholder="مثال: https://... أو shahid.pdf" />
+
+      <label>ملاحظات إضافية</label>
+      <textarea id="evidenceNotes" placeholder="اختياري"></textarea>
+
+      <div class="toolbar">
+        <button class="btn btn-primary" onclick="saveEvidenceFromStaff()">إرسال الشاهد</button>
+      </div>
+
+      <p id="staffEvidenceMsg" class="success-text"></p>
+
+      <h3 class="subtitle">الشواهد المضافة</h3>
+      <div id="staffOwnEvidenceList"></div>
+    </section>
+
+    <section id="managerApp" class="hidden">
+      <div class="app-shell">
+        <aside class="sidebar card">
+          <div class="subtitle">لوحة المديرة</div>
+          <div id="managerWelcome" class="info-line"></div>
+          <div class="toolbar" style="margin-bottom:14px">
+            <span class="badge">صلاحية: مديرة</span>
+          </div>
+
+          <button class="menu-btn active" data-page="dashboardPage" onclick="showManagerPage('dashboardPage', this)">الرئيسية</button>
+          <button class="menu-btn" data-page="staffPage" onclick="showManagerPage('staffPage', this)">المنسوبات</button>
+          <button class="menu-btn" data-page="qrPage" onclick="showManagerPage('qrPage', this)">الباركودات</button>
+          <button class="menu-btn" data-page="evidencePage" onclick="showManagerPage('evidencePage', this)">الشواهد</button>
+          <button class="menu-btn" data-page="evaluationPage" onclick="showManagerPage('evaluationPage', this)">التقييم</button>
+          <button class="menu-btn" data-page="planPage" onclick="showManagerPage('planPage', this)">الخطة العلاجية</button>
+          <button class="menu-btn" data-page="reportsPage" onclick="showManagerPage('reportsPage', this)">التقارير</button>
+          <button class="menu-btn" onclick="logoutManager()">تسجيل خروج</button>
+        </aside>
+
+        <main>
+          <section id="dashboardPage" class="card">
+            <div class="head-mini">
+              <h2 class="title">الرئيسية</h2>
+              <div class="badge" id="currentTargetBadge">لا توجد منسوبة محددة</div>
+            </div>
+
+            <label>اختيار المنسوبة</label>
+            <select id="targetEmployeeSelect" onchange="selectEmployeeByManager(this.value)"></select>
+
+            <div class="grid-3" style="margin-top:16px">
+              <div class="staff-row"><strong>عدد المنسوبات</strong><span id="countStaff">0</span></div>
+              <div class="staff-row"><strong>عدد الشواهد للمنسوبة المحددة</strong><span id="countEvidence">0</span></div>
+              <div class="staff-row"><strong>حالة التقييم</strong><span id="evalState">غير محفوظ</span></div>
+            </div>
+
+            <div class="notice" style="margin-top:16px">
+              المديرة فقط تستطيع عرض الشواهد والتقييم والتقارير والخطة العلاجية.
+            </div>
+          </section>
+
+          <section id="staffPage" class="card hidden">
+            <h2 class="title">المنسوبات</h2>
+            <div id="staffListBox"></div>
+          </section>
+
+          <section id="qrPage" class="card hidden">
+            <h2 class="title">الباركودات التفاعلية للمنسوبات</h2>
+            <div class="notice">
+              كل منسوبة لها QR خاص. عند فتحه يظهر نموذج رفع الشواهد الخاص بها فقط.
+            </div>
+            <div id="qrGrid" class="qr-grid" style="margin-top:16px"></div>
+          </section>
+
+          <section id="evidencePage" class="card hidden">
+            <div class="head-mini">
+              <h2 class="title">الشواهد</h2>
+              <div id="evidenceTargetText" class="badge">لا توجد منسوبة محددة</div>
+            </div>
+            <div id="managerEvidenceList"></div>
+          </section>
+
+          <section id="evaluationPage" class="card hidden">
+            <div class="head-mini">
+              <h2 class="title">التقييم</h2>
+              <div id="evaluationTargetText" class="badge">لا توجد منسوبة محددة</div>
+            </div>
+
+            <div id="criteriaContainer"></div>
+
+            <div class="toolbar">
+              <button class="btn btn-primary" onclick="calculateEvaluation()">حساب النتيجة</button>
+              <button class="btn btn-primary" onclick="saveEvaluation()">حفظ التقييم</button>
+            </div>
+
+            <div id="evaluationResult" class="report-box" style="margin-top:16px">لا يوجد حساب بعد.</div>
+          </section>
+
+          <section id="planPage" class="card hidden">
+            <div class="head-mini">
+              <h2 class="title">الخطة العلاجية</h2>
+              <div id="planTargetText" class="badge">لا توجد منسوبة محددة</div>
+            </div>
+
+            <label>العنصر الضعيف</label>
+            <input id="weakItem" placeholder="يظهر تلقائيًا بعد حساب التقييم أو يكتب يدويًا" />
+
+            <label>الإجراء العلاجي أو التطويري</label>
+            <textarea id="actionPlan" placeholder="اكتبي الإجراء العلاجي أو التطويري"></textarea>
+
+            <div class="toolbar">
+              <button class="btn btn-primary" onclick="savePlan()">حفظ الخطة العلاجية</button>
+            </div>
+
+            <p id="planMsg" class="success-text"></p>
+          </section>
+
+          <section id="reportsPage" class="card hidden">
+            <div class="head-mini">
+              <h2 class="title">التقرير</h2>
+              <div id="reportTargetText" class="badge">لا توجد منسوبة محددة</div>
+            </div>
+            <div id="reportBox" class="report-box">لا يوجد تقرير بعد.</div>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      حفظ البيانات في هذه النسخة يتم محليًا داخل نفس المتصفح فقط.
+    </div>
+  </div>
+
+  <script>
+    const MANAGER_PIN = "1234";
+
+    const staff = [
+      {name:"ابتهال عبدالله الصاملي", role:"مديرة", slug:"manager-ibtihal"},
+      {name:"صالحة علي خواجي", role:"وكيلة", slug:"salha-khawaji"},
+      {name:"سامية مشيعيل السلمي", role:"وكيلة", slug:"samia-sulami"},
+      {name:"جيهان محمد الحربي", role:"موجهة طلابية", slug:"jihan-harbi"},
+      {name:"فايزة أحمد سعيد", role:"محضرة معمل", slug:"faiza-lab"},
+
+      {name:"ابتسام هزاع العمري", role:"معلمة", slug:"ibtisam-omari"},
+      {name:"احلام عبدالله المقاطي", role:"معلمة", slug:"ahlam-maqati"},
+      {name:"اسماء حمدان الخطابي", role:"معلمة", slug:"asma-khatabi"},
+      {name:"ناهد عبد الغني عسكر", role:"معلمة", slug:"nahed-askar"},
+      {name:"بدريه رديده الصاعدي", role:"معلمة", slug:"badriyah-saaidi"},
+      {name:"تهاني عواد موسى الحربي", role:"معلمة", slug:"tahani-awad"},
+      {name:"ذهبه معين العتيبي", role:"معلمة", slug:"zahbah-otaibi"},
+      {name:"رهام يحي واصل", role:"معلمة", slug:"reham-wasel"},
+      {name:"نور عادل زيني", role:"معلمة", slug:"noor-zaini"},
+      {name:"عبير نافع الصاعدي", role:"معلمة", slug:"abeer-saaidi"},
+      {name:"عفاف علي عالي الحربي", role:"معلمة", slug:"afaf-harbi"},
+      {name:"علوه فايز الاسمري", role:"معلمة", slug:"alwah-asmari"},
+      {name:"عواطف خضر القرشي", role:"معلمة", slug:"awatif-qurashi"},
+      {name:"فاطمه عيد العوفي", role:"معلمة", slug:"fatimah-aufi"},
+      {name:"فاطمه عادل ابوالغيط", role:"معلمة", slug:"fatimah-abu"},
+      {name:"فاطمه علي الزهراني", role:"معلمة", slug:"fatimah-zahrani"},
+      {name:"هيفاء رده العتيبي", role:"معلمة", slug:"haifa-otaibi"},
+      {name:"لولوه محمد العسيري", role:"معلمة", slug:"lolwah-asiri"},
+      {name:"ماجده مساعد الحربي", role:"معلمة", slug:"majdah-harbi"},
+      {name:"مشاعل احمد عسيري", role:"معلمة", slug:"mashael-asiri"},
+      {name:"مهاء يوسف الشهراني", role:"معلمة", slug:"maha-shahrani"},
+      {name:"نجوى فرج الزهراني", role:"معلمة", slug:"najwa-zahrani"},
+      {name:"مواهب حامد اللهيبي", role:"معلمة", slug:"mawahib-luhaybi"},
+      {name:"نعيمه احمد الطياري", role:"معلمة", slug:"naimah-tayari"},
+      {name:"سلوى مسعود الصاعدي", role:"معلمة", slug:"salwa-saaidi"},
+      {name:"ساره مطر اللحياني", role:"معلمة", slug:"sarah-lihyani"},
+      {name:"امل عبيد اللحياني", role:"معلمة", slug:"amal-lihyani"},
+      {name:"أميرة صالح اللحياني", role:"معلمة", slug:"amira-lihyani"},
+      {name:"حنان سعيد السهلي", role:"معلمة", slug:"hanan-sahli"},
+      {name:"رانيا احمد النباتي", role:"معلمة", slug:"rania-nabati"},
+      {name:"راويه صالح بن جحالن", role:"معلمة", slug:"rawiah-jahlan"},
+      {name:"سعاد درويش الحربي", role:"معلمة", slug:"suad-harbi"},
+      {name:"سميرة عواد الحازمي", role:"معلمة", slug:"samirah-hazmi1"},
+      {name:"سميرة موسى مطاعن", role:"معلمة", slug:"samirah-mutaan"},
+      {name:"سميره حسن اللحياني", role:"معلمة", slug:"samirah-lihyani2"},
+      {name:"صالحه عثمان الغامدي", role:"معلمة", slug:"salhah-ghamdi"},
+      {name:"منال احمد بن الشريف", role:"معلمة", slug:"manal-sharif"},
+      {name:"ناديه محمد الحازمي", role:"معلمة", slug:"nadiah-hazmi1"},
+      {name:"هاجر عاتق الحربي", role:"معلمة", slug:"hajar-harbi"},
+      {name:"فيروز مبيريك السلمي", role:"معلمة", slug:"fairouz-sulami"},
+      {name:"نبيلة عبد الرحمن الحسني", role:"معلمة", slug:"nabilah-hasani"},
+      {name:"نادية زامل الحازمي", role:"معلمة", slug:"nadiah-hazmi2"},
+      {name:"نوفه علي العتيبي", role:"معلمة", slug:"noufah-otaibi"},
+
+      {name:"لولوه فهد ال عزمة", role:"إدارية", slug:"lolwah-admin1"},
+      {name:"تهاني مساعد الحربي", role:"إدارية", slug:"tahani-admin2"},
+      {name:"أحلام محمد اسماعيل", role:"إدارية", slug:"ahlam-admin3"},
+      {name:"ايمان حمود اللهيبي", role:"إدارية", slug:"iman-admin4"},
+      {name:"خيرية سعيد الغامدي", role:"إدارية", slug:"khairiyah-admin5"},
+      {name:"أريج عيد اللهيبي", role:"إدارية", slug:"areej-admin6"}
+    ];
+
+    const criteriaByRole = {
+      "مديرة": [
+        "أداء الواجبات الوظيفية",
+        "التفاعل مع المجتمع المهني",
+        "التفاعل مع أولياء الأمور",
+        "تنفيذ إجراءات علمية لتحسين نتائج التعلم",
+        "إعداد الخطط المدرسية اللازمة",
+        "متابعة تنفيذ الخطط المدرسية",
+        "الإسهام في تحسين مستوى أداء المدرسة",
+        "اتخاذ إجراءات تربوية تحقق الانضباط المدرسي",
+        "إدارة الموارد في المدرسة بكفاءة",
+        "تقويم أداء منسوبي المدرسة"
+      ],
+      "وكيلة": [
+        "أداء الواجبات الوظيفية",
+        "التفاعل مع المجتمع المهني",
+        "التفاعل مع أولياء الأمور",
+        "المشاركة في إعداد الخطط المدرسية",
+        "متابعة تنفيذ الخطط المدرسية",
+        "الإسهام في تحسين مستوى أداء المدرسة",
+        "تهيئة البيئة المدرسية الآمنة",
+        "تعزيز السلوك الإيجابي",
+        "توظيف المنصات الرقمية المعتمدة"
+      ],
+      "موجهة طلابية": [
+        "أداء الواجبات الوظيفية",
+        "التفاعل مع المجتمع المهني",
+        "التفاعل مع أولياء الأمور",
+        "إعداد خطة لبرامج التوجيه الطلابي",
+        "تقديم برامج تربوية لتعزيز دافعية الطلبة للتعلم",
+        "تقديم التدخلات المناسبة لتعزيز الانضباط",
+        "توعية المتعلمين وأولياء أمورهم بقواعد السلوك والمواظبة",
+        "تقديم تدخلات تربوية للمتأخرين دراسيًا"
+      ],
+      "محضرة معمل": [
+        "أداء الواجبات الوظيفية",
+        "التفاعل مع المجتمع المهني",
+        "المعرفة بالأسس والمفاهيم الفنية",
+        "توفير المستلزمات اللازمة للتجارب العلمية",
+        "الالتزام بإجراءات السلامة المهنية",
+        "تحضير وتجهيز المختبر",
+        "إعداد التقارير الأسبوعية",
+        "إعداد التقارير الدورية عن حالة الأجهزة"
+      ],
+      "معلمة": [
+        "أداء الواجبات الوظيفية",
+        "التفاعل مع المجتمع المهني",
+        "التفاعل مع أولياء الأمور",
+        "التنوع في استراتيجيات التدريس",
+        "تحسين نتائج المتعلمين",
+        "إعداد وتنفيذ خطة التعلم",
+        "توظيف تقنيات ووسائل التعلم المناسبة",
+        "تهيئة بيئة تعليمية",
+        "الإدارة الصفية",
+        "تحليل نتائج المتعلمين وتشخيص مستوياتهم",
+        "تنوع أساليب التقويم"
+      ],
+      "إدارية": [
+        "أداء الواجبات الوظيفية",
+        "الانضباط والالتزام",
+        "إنجاز المعاملات",
+        "التعاون والعمل بروح الفريق",
+        "استخدام الأنظمة والمنصات الرقمية"
+      ]
+    };
+
+    let currentManager = null;
+    let currentTarget = null;
+    let currentStaffFromRoute = null;
+
+    function qs(id){ return document.getElementById(id); }
+
+    function storageKey(prefix, key){
+      return prefix + "::" + key;
+    }
+
+    function getManagers(){
+      return staff.filter(s => s.role === "مديرة");
+    }
+
+    function getNonManagers(){
+      return staff.filter(s => s.role !== "مديرة");
+    }
+
+    function getStaffBySlug(slug){
+      return staff.find(s => s.slug === slug) || null;
+    }
+
+    function getStaffByName(name){
+      return staff.find(s => s.name === name) || null;
+    }
+
+    function getEvidenceListFor(name){
+      return JSON.parse(localStorage.getItem(storageKey("evidences", name)) || "[]");
+    }
+
+    function setEvidenceListFor(name, data){
+      localStorage.setItem(storageKey("evidences", name), JSON.stringify(data));
+    }
+
+    function getEvaluationFor(name){
+      return JSON.parse(localStorage.getItem(storageKey("evaluation", name)) || "null");
+    }
+
+    function getPlanFor(name){
+      return JSON.parse(localStorage.getItem(storageKey("plan", name)) || "null");
+    }
+
+    function setPlanFor(name, data){
+      localStorage.setItem(storageKey("plan", name), JSON.stringify(data));
+    }
+
+    function setEvaluationFor(name, data){
+      localStorage.setItem(storageKey("evaluation", name), JSON.stringify(data));
+    }
+
+    function appBaseUrl(){
+      return window.location.origin + window.location.pathname;
+    }
+
+    function staffRouteUrl(slug){
+      return appBaseUrl() + "?staff=" + encodeURIComponent(slug);
+    }
+
+    function escapeHtml(value){
+      if(value === null || value === undefined) return "";
+      return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+    }
+
+    function openManagerLogin(){
+      window.scrollTo({top:0, behavior:"smooth"});
+      qs("managerPin").focus();
+    }
+
+    function showStaffRouteInfo(){
+      qs("routeInfo").classList.remove("hidden");
+    }
+
+    function populateManagerSelect(){
+      qs("managerName").innerHTML = '<option value="">اختاري المديرة</option>';
+      getManagers().forEach(m => {
+        const op = document.createElement("option");
+        op.value = m.name;
+        op.textContent = m.name;
+        qs("managerName").appendChild(op);
+      });
+    }
+
+    function managerLogin(){
+      const name = qs("managerName").value;
+      const pin = qs("managerPin").value.trim();
+
+      if(!name){
+        alert("اختاري اسم المديرة");
+        return;
+      }
+      if(pin !== MANAGER_PIN){
+        alert("رمز الدخول غير صحيح");
+        return;
+      }
+
+      currentManager = getStaffByName(name);
+      if(!currentManager){
+        alert("لم يتم العثور على المديرة");
+        return;
+      }
+
+      qs("landingSection").classList.add("hidden");
+      qs("staffFormSection").classList.add("hidden");
+      qs("managerApp").classList.remove("hidden");
+
+      qs("managerWelcome").textContent = "مرحبًا " + currentManager.name;
+      buildTargetEmployeeSelect();
+      buildStaffList();
+      buildQrCards();
+
+      if(getNonManagers().length){
+        selectEmployeeByManager(getNonManagers()[0].name);
+      }
+
+      showManagerPage("dashboardPage", document.querySelector('.menu-btn[data-page="dashboardPage"]'));
+    }
+
+    function logoutManager(){
+      currentManager = null;
+      currentTarget = null;
+      qs("managerApp").classList.add("hidden");
+      qs("staffFormSection").classList.add("hidden");
+      qs("landingSection").classList.remove("hidden");
+      qs("managerPin").value = "";
+      history.replaceState({}, "", appBaseUrl());
+    }
+
+    function goHome(){
+      currentStaffFromRoute = null;
+      qs("staffFormSection").classList.add("hidden");
+      qs("managerApp").classList.add("hidden");
+      qs("landingSection").classList.remove("hidden");
+      history.replaceState({}, "", appBaseUrl());
+    }
+
+    function showManagerPage(pageId, btn){
+      ["dashboardPage","staffPage","qrPage","evidencePage","evaluationPage","planPage","reportsPage"].forEach(id=>{
+        qs(id).classList.add("hidden");
+      });
+      qs(pageId).classList.remove("hidden");
+
+      document.querySelectorAll(".menu-btn[data-page]").forEach(b=>b.classList.remove("active"));
+      if(btn) btn.classList.add("active");
+    }
+
+    function buildTargetEmployeeSelect(){
+      qs("targetEmployeeSelect").innerHTML = '<option value="">اختاري المنسوبة</option>';
+      getNonManagers().forEach(s => {
+        const op = document.createElement("option");
+        op.value = s.name;
+        op.textContent = s.name + " (" + s.role + ")";
+        qs("targetEmployeeSelect").appendChild(op);
+      });
+      qs("countStaff").textContent = getNonManagers().length;
+    }
+
+    function selectEmployeeByManager(name){
+      currentTarget = getStaffByName(name);
+      if(!currentTarget){
+        qs("currentTargetBadge").textContent = "لا توجد منسوبة محددة";
+        qs("evidenceTargetText").textContent = "لا توجد منسوبة محددة";
+        qs("evaluationTargetText").textContent = "لا توجد منسوبة محددة";
+        qs("planTargetText").textContent = "لا توجد منسوبة محددة";
+        qs("reportTargetText").textContent = "لا توجد منسوبة محددة";
+        return;
+      }
+
+      qs("targetEmployeeSelect").value = currentTarget.name;
+      qs("currentTargetBadge").textContent = currentTarget.name + " - " + currentTarget.role;
+      qs("evidenceTargetText").textContent = currentTarget.name;
+      qs("evaluationTargetText").textContent = currentTarget.name;
+      qs("planTargetText").textContent = currentTarget.name;
+      qs("reportTargetText").textContent = currentTarget.name;
+
+      renderManagerEvidenceList();
+      loadCriteriaForCurrentTarget();
+      loadPlanForCurrentTarget();
+      buildReport();
+      refreshDashboardCounts();
+    }
+
+    function refreshDashboardCounts(){
+      if(!currentTarget){
+        qs("countEvidence").textContent = "0";
+        qs("evalState").textContent = "غير محفوظ";
+        return;
+      }
+
+      const evidences = getEvidenceListFor(currentTarget.name);
+      const evaluation = getEvaluationFor(currentTarget.name);
+
+      qs("countEvidence").textContent = evidences.length;
+      qs("evalState").textContent = evaluation ? "محفوظ" : "غير محفوظ";
+    }
+
+    function buildStaffList(){
+      const box = qs("staffListBox");
+      const employees = getNonManagers();
+
+      if(!employees.length){
+        box.innerHTML = '<div class="empty">لا توجد منسوبات.</div>';
+        return;
+      }
+
+      box.innerHTML = "";
+      employees.forEach(s => {
+        const div = document.createElement("div");
+        div.className = "staff-row";
+        div.innerHTML = `
+          <div>
+            <strong>${escapeHtml(s.name)}</strong>
+            <div class="muted">${escapeHtml(s.role)}</div>
+          </div>
+          <button class="btn btn-soft" onclick="selectEmployeeByManager('${escapeHtml(s.name).replace(/'/g,"\\'")}');showManagerPage('dashboardPage', document.querySelector('.menu-btn[data-page=&quot;dashboardPage&quot;]'));">اختيار</button>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function buildQrCards(){
+      const box = qs("qrGrid");
+      const employees = getNonManagers();
+
+      if(!employees.length){
+        box.innerHTML = '<div class="empty">لا توجد باركودات.</div>';
+        return;
+      }
+
+      box.innerHTML = "";
+      employees.forEach(s => {
+        const route = staffRouteUrl(s.slug);
+        const qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" + encodeURIComponent(route);
+
+        const div = document.createElement("div");
+        div.className = "qr-card";
+        div.innerHTML = `
+          <div><strong>${escapeHtml(s.name)}</strong></div>
+          <div class="muted">${escapeHtml(s.role)}</div>
+          <img src="${qrSrc}" alt="QR ${escapeHtml(s.name)}" />
+          <div class="link-box">${escapeHtml(route)}</div>
+          <div class="toolbar" style="justify-content:center">
+            <button class="btn btn-soft" onclick="copyText('${route.replace(/'/g,"\\'")}')">نسخ الرابط</button>
+            <button class="btn btn-soft" onclick="window.open('${route}','_blank')">فتح</button>
+          </div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function copyText(text){
+      navigator.clipboard.writeText(text).then(()=>{
+        alert("تم نسخ الرابط");
+      }).catch(()=>{
+        alert("تعذر النسخ تلقائيًا");
+      });
+    }
+
+    function startStaffRouteMode(person){
+      currentStaffFromRoute = person;
+      qs("landingSection").classList.add("hidden");
+      qs("managerApp").classList.add("hidden");
+      qs("staffFormSection").classList.remove("hidden");
+      qs("staffHeaderText").textContent = "المنسوبة: " + person.name + " | الفئة: " + person.role;
+      qs("staffEvidenceMsg").textContent = "";
+      renderStaffOwnEvidenceList();
+    }
+
+    function saveEvidenceFromStaff(){
+      if(!currentStaffFromRoute){
+        alert("لا توجد منسوبة محددة");
+        return;
+      }
+
+      const title = qs("evidenceTitle").value.trim();
+      const description = qs("evidenceDescription").value.trim();
+      const file = qs("evidenceFile").value.trim();
+      const notes = qs("evidenceNotes").value.trim();
+
+      if(!title && !description && !file){
+        alert("أدخلي بيانات الشاهد");
+        return;
+      }
+
+      const list = getEvidenceListFor(currentStaffFromRoute.name);
+      list.unshift({
+        title,
+        description,
+        file,
+        notes,
+        by: currentStaffFromRoute.name,
+        slug: currentStaffFromRoute.slug,
+        date: new Date().toLocaleString("ar-SA")
+      });
+      setEvidenceListFor(currentStaffFromRoute.name, list);
+
+      qs("evidenceTitle").value = "";
+      qs("evidenceDescription").value = "";
+      qs("evidenceFile").value = "";
+      qs("evidenceNotes").value = "";
+      qs("staffEvidenceMsg").textContent = "تم حفظ الشاهد بنجاح.";
+      renderStaffOwnEvidenceList();
+    }
+
+    function renderStaffOwnEvidenceList(){
+      const box = qs("staffOwnEvidenceList");
+      if(!currentStaffFromRoute){
+        box.innerHTML = '<div class="empty">لا توجد منسوبة محددة.</div>';
+        return;
+      }
+
+      const list = getEvidenceListFor(currentStaffFromRoute.name);
+      if(!list.length){
+        box.innerHTML = '<div class="empty">لا توجد شواهد مضافة بعد.</div>';
+        return;
+      }
+
+      box.innerHTML = "";
+      list.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "evidence-row";
+        div.innerHTML = `
+          <div><strong>عنوان الشاهد:</strong> ${escapeHtml(item.title || "-")}</div>
+          <div><strong>الوصف:</strong> ${escapeHtml(item.description || "-")}</div>
+          <div><strong>الملف:</strong> ${escapeHtml(item.file || "-")}</div>
+          <div><strong>ملاحظات:</strong> ${escapeHtml(item.notes || "-")}</div>
+          <div class="muted"><strong>التاريخ:</strong> ${escapeHtml(item.date || "-")}</div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function renderManagerEvidenceList(){
+      const box = qs("managerEvidenceList");
+      if(!currentTarget){
+        box.innerHTML = '<div class="empty">اختاري المنسوبة أولًا.</div>';
+        return;
+      }
+
+      const list = getEvidenceListFor(currentTarget.name);
+      if(!list.length){
+        box.innerHTML = '<div class="empty">لا توجد شواهد لهذه المنسوبة.</div>';
+        return;
+      }
+
+      box.innerHTML = "";
+      list.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "evidence-row";
+        div.innerHTML = `
+          <div><strong>عنوان الشاهد:</strong> ${escapeHtml(item.title || "-")}</div>
+          <div><strong>الوصف:</strong> ${escapeHtml(item.description || "-")}</div>
+          <div><strong>الملف:</strong> ${escapeHtml(item.file || "-")}</div>
+          <div><strong>ملاحظات:</strong> ${escapeHtml(item.notes || "-")}</div>
+          <div class="muted"><strong>أضيف بواسطة:</strong> ${escapeHtml(item.by || "-")}</div>
+          <div class="muted"><strong>التاريخ:</strong> ${escapeHtml(item.date || "-")}</div>
+        `;
+        box.appendChild(div);
+      });
+    }
+
+    function loadCriteriaForCurrentTarget(){
+      const box = qs("criteriaContainer");
+      box.innerHTML = "";
+
+      if(!currentTarget){
+        box.innerHTML = '<div class="empty">اختاري المنسوبة أولًا.</div>';
+        qs("evaluationResult").textContent = "لا يوجد حساب بعد.";
+        return;
+      }
+
+      const criteria = criteriaByRole[currentTarget.role] || [];
+      const saved = getEvaluationFor(currentTarget.name);
+
+      criteria.forEach((item, index) => {
+        const selectedValue = saved && saved.details && saved.details[index] ? String(saved.details[index].score) : "3";
+        const div = document.createElement("div");
+        div.className = "criterion-box";
+        div.innerHTML = `
+          <label>${escapeHtml(item)}</label>
+          <select id="criterion_${index}">
+            <option value="1" ${selectedValue === "1" ? "selected" : ""}>1 غير مرضي</option>
+            <option value="2" ${selectedValue === "2" ? "selected" : ""}>2 بحاجة إلى تطوير</option>
+            <option value="3" ${selectedValue === "3" ? "selected" : ""}>3 يحقق المطلوب</option>
+            <option value="4" ${selectedValue === "4" ? "selected" : ""}>4 وافق التوقعات</option>
+            <option value="5" ${selectedValue === "5" ? "selected" : ""}>5 تخطى التوقعات</option>
+          </select>
+        `;
+        box.appendChild(div);
+      });
+
+      if(saved){
+        qs("evaluationResult").textContent =
+          "اسم المنسوبة: " + saved.employee + "\n" +
+          "الفئة: " + saved.role + "\n" +
+          "المتوسط: " + saved.average + "\n" +
+          "التقدير: " + saved.grade + "\n" +
+          "العناصر الضعيفة: " + (saved.weakItems.length ? saved.weakItems.join(" - ") : "لا يوجد") + "\n" +
+          "المقيم: " + saved.evaluator + "\n" +
+          "التاريخ: " + saved.date;
+      } else {
+        qs("evaluationResult").textContent = "لا يوجد حساب بعد.";
+      }
+    }
+
+    function calculateEvaluation(){
+      if(!currentTarget){
+        alert("اختاري المنسوبة أولًا");
+        return;
+      }
+
+      const criteria = criteriaByRole[currentTarget.role] || [];
+      let total = 0;
+      let weakItems = [];
+      let details = [];
+
+      criteria.forEach((item, index) => {
+        const val = parseInt(qs("criterion_" + index).value, 10);
+        total += val;
+        details.push({item, score: val});
+        if(val <= 2) weakItems.push(item);
+      });
+
+      const avg = criteria.length ? total / criteria.length : 0;
+      let grade = "";
+
+      if(avg >= 4.5) grade = "تخطى التوقعات";
+      else if(avg >= 3.5) grade = "وافق التوقعات";
+      else if(avg >= 2.5) grade = "يحقق المطلوب";
+      else if(avg >= 1.5) grade = "بحاجة إلى تطوير";
+      else grade = "غير مرضي";
+
+      qs("evaluationResult").textContent =
+        "اسم المنسوبة: " + currentTarget.name + "\n" +
+        "الفئة: " + currentTarget.role + "\n" +
+        "المتوسط: " + avg.toFixed(2) + "\n" +
+        "التقدير: " + grade + "\n" +
+        "العناصر الضعيفة: " + (weakItems.length ? weakItems.join(" - ") : "لا يوجد");
+
+      qs("weakItem").value = weakItems.join(" - ");
+    }
+
+    function saveEvaluation(){
+      if(!currentTarget){
+        alert("اختاري المنسوبة أولًا");
+        return;
+      }
+
+      const criteria = criteriaByRole[currentTarget.role] || [];
+      let total = 0;
+      let weakItems = [];
+      let details = [];
+
+      criteria.forEach((item, index) => {
+        const val = parseInt(qs("criterion_" + index).value, 10);
+        total += val;
+        details.push({item, score: val});
+        if(val <= 2) weakItems.push(item);
+      });
+
+      const avg = criteria.length ? total / criteria.length : 0;
+      let grade = "";
+
+      if(avg >= 4.5) grade = "تخطى التوقعات";
+      else if(avg >= 3.5) grade = "وافق التوقعات";
+      else if(avg >= 2.5) grade = "يحقق المطلوب";
+      else if(avg >= 1.5) grade = "بحاجة إلى تطوير";
+      else grade = "غير مرضي";
+
+      const payload = {
+        employee: currentTarget.name,
+        role: currentTarget.role,
+        evaluator: currentManager ? currentManager.name : "المديرة",
+        average: avg.toFixed(2),
+        grade,
+        weakItems,
+        details,
+        date: new Date().toLocaleString("ar-SA")
+      };
+
+      setEvaluationFor(currentTarget.name, payload);
+
+      qs("evaluationResult").textContent =
+        "تم حفظ التقييم بنجاح.\n\n" +
+        "اسم المنسوبة: " + payload.employee + "\n" +
+        "الفئة: " + payload.role + "\n" +
+        "المتوسط: " + payload.average + "\n" +
+        "التقدير: " + payload.grade + "\n" +
+        "العناصر الضعيفة: " + (payload.weakItems.length ? payload.weakItems.join(" - ") : "لا يوجد") + "\n" +
+        "المقيم: " + payload.evaluator + "\n" +
+        "التاريخ: " + payload.date;
+
+      qs("weakItem").value = weakItems.join(" - ");
+      buildReport();
+      refreshDashboardCounts();
+    }
+
+    function savePlan(){
+      if(!currentTarget){
+        alert("اختاري المنسوبة أولًا");
+        return;
+      }
+
+      const weak = qs("weakItem").value.trim();
+      const action = qs("actionPlan").value.trim();
+
+      if(!weak || !action){
+        alert("أكملي بيانات الخطة العلاجية");
+        return;
+      }
+
+      const payload = {
+        employee: currentTarget.name,
+        role: currentTarget.role,
+        weakItem: weak,
+        action,
+        by: currentManager ? currentManager.name : "المديرة",
+        date: new Date().toLocaleString("ar-SA")
+      };
+
+      setPlanFor(currentTarget.name, payload);
+      qs("planMsg").textContent = "تم حفظ الخطة العلاجية بنجاح.";
+      buildReport();
+    }
+
+    function loadPlanForCurrentTarget(){
+      qs("planMsg").textContent = "";
+      if(!currentTarget){
+        qs("weakItem").value = "";
+        qs("actionPlan").value = "";
+        return;
+      }
+
+      const plan = getPlanFor(currentTarget.name);
+      if(plan){
+        qs("weakItem").value = plan.weakItem || "";
+        qs("actionPlan").value = plan.action || "";
+      } else {
+        qs("weakItem").value = "";
+        qs("actionPlan").value = "";
+      }
+    }
+
+    function buildReport(){
+      if(!currentTarget){
+        qs("reportBox").textContent = "لا توجد منسوبة محددة.";
+        return;
+      }
+
+      const evidences = getEvidenceListFor(currentTarget.name);
+      const evaluation = getEvaluationFor(currentTarget.name);
+      const plan = getPlanFor(currentTarget.name);
+
+      let text = "";
+      text += "اسم المنسوبة: " + currentTarget.name + "\n";
+      text += "الفئة: " + currentTarget.role + "\n";
+      text += "عدد الشواهد: " + evidences.length + "\n\n";
+
+      text += "الشواهد:\n";
+      if(evidences.length){
+        evidences.forEach((ev, i) => {
+          text += (i + 1) + "- " + (ev.title || "-") + " | " + (ev.description || "-") + " | ملف: " + (ev.file || "-") + "\n";
+        });
+      } else {
+        text += "لا توجد شواهد.\n";
+      }
+
+      text += "\nالتقييم:\n";
+      if(evaluation){
+        text += "المقيم: " + evaluation.evaluator + "\n";
+        text += "المتوسط: " + evaluation.average + "\n";
+        text += "التقدير: " + evaluation.grade + "\n";
+        text += "العناصر الضعيفة: " + (evaluation.weakItems.length ? evaluation.weakItems.join(" - ") : "لا يوجد") + "\n";
+      } else {
+        text += "لا يوجد تقييم محفوظ.\n";
+      }
+
+      text += "\nالخطة العلاجية:\n";
+      if(plan){
+        text += "العنصر الضعيف: " + plan.weakItem + "\n";
+        text += "الإجراء: " + plan.action + "\n";
+        text += "أضيفت بواسطة: " + plan.by + "\n";
+        text += "التاريخ: " + plan.date + "\n";
+      } else {
+        text += "لا توجد خطة علاجية محفوظة.\n";
+      }
+
+      qs("reportBox").textContent = text;
+    }
+
+    function initFromRoute(){
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get("staff");
+
+      if(!slug){
+        qs("landingSection").classList.remove("hidden");
+        qs("staffFormSection").classList.add("hidden");
+        qs("managerApp").classList.add("hidden");
+        return;
+      }
+
+      const person = getStaffBySlug(slug);
+      if(!person || person.role === "مديرة"){
+        qs("landingSection").classList.remove("hidden");
+        qs("staffFormSection").classList.add("hidden");
+        qs("managerApp").classList.add("hidden");
+        return;
+      }
+
+      startStaffRouteMode(person);
+    }
+
+    populateManagerSelect();
+    initFromRoute();
+  </script>
+</body>
+</html>
