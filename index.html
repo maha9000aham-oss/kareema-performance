@@ -1001,7 +1001,9 @@ function convertLink(link){
 ${
   item.file && item.file.includes("drive.google.com/file")
   ? `<iframe src="${convertLink(item.file)}" width="100%" height="300" style="border-radius:10px;"></iframe>`
-  : `<a href="${item.file}" target="_blank" style="color:#0b8f55;font-weight:bold;">فتح الشواهد</a>`
+  : item.file && item.file.includes("drive.google.com/drive/folders")
+  ? `<a href="${item.file}" target="_blank" style="color:#0b8f55;font-weight:bold;">فتح المجلد</a>`
+  : `<a href="${item.file}" target="_blank" style="color:#0b8f55;font-weight:bold;">فتح الشاهد</a>`
 }
 </div>
           <div><strong>ملاحظات:</strong> ${escapeHtml(item.notes || "-")}</div>
