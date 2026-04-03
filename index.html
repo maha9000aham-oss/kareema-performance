@@ -452,10 +452,20 @@
             <select id="targetEmployeeSelect" onchange="selectEmployeeByManager(this.value)"></select>
 
             <div class="grid-3" style="margin-top:16px">
-  <div class="staff-row"><strong>عدد المنسوبات</strong><span id="countStaff">0</span></div>
-  <div class="staff-row"><strong>عدد الشواهد للمنسوبة المحددة</strong><span id="countEvidence">0</span></div>
-  <div class="staff-row"><strong>حالة التقييم</strong><span id="evalState">غير محفوظ</span></div>
-</div>
+<button class="staff-row dashboard-card-btn" onclick="showManagerPage('staffPage', document.querySelector('.menu-btn[data-page=&quot;staffPage&quot;]'))">
+  <strong>عدد المنسوبات</strong>
+  <span id="countStaff">0</span>
+</button>
+
+<button class="staff-row dashboard-card-btn" onclick="showManagerPage('evidencePage', document.querySelector('.menu-btn[data-page=&quot;evidencePage&quot;]'))">
+  <strong>عدد الشواهد للمنسوبة المحددة</strong>
+  <span id="countEvidence">0</span>
+</button>
+
+<button class="staff-row dashboard-card-btn" onclick="showManagerPage('evaluationPage', document.querySelector('.menu-btn[data-page=&quot;evaluationPage&quot;]'))">
+  <strong>حالة التقييم</strong>
+  <span id="evalState">غير محفوظ</span>
+</button>
 
             <div class="notice" style="margin-top:16px">
               المديرة فقط تستطيع عرض الشواهد والتقييم والتقارير والخطة العلاجية.
